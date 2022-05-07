@@ -1,0 +1,5 @@
+logs_DummyML.log
+prediction.log
+
+models/__pycache__/
+__pycache__/
