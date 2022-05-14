@@ -6,7 +6,7 @@ from models.random_generator import RandomGenerator
 import logging
 
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
 formatter = logging.Formatter("%(asctime)s:%(levelname)s:%(name)s:%(message)s")
 
@@ -54,6 +54,7 @@ async def validate_data(user: User = Body(..., embed=True)):
 @app.post("/prediction")
 async def prediction(user: User = Body(..., embed=True)):
     logger.debug(f"Application making prediction with user: {user}")
+    logger.info(f"{user.dict()}")
     if (user.age):
         logger.debug(f"Age is not null, seed = {user.age}")
         rnd = RandomGenerator(user.age)
